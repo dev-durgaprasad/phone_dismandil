@@ -1,16 +1,20 @@
+
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/mobile_explore/',
+  // GitHub Pages repository path
+  base: '/phone_dismandil/',
 
   server: {
     host: '0.0.0.0',
-    port: 5300
+    port: 5300,
+    strictPort: true
   },
 
   preview: {
     host: '0.0.0.0',
-    port: 4173
+    port: 4173,
+    strictPort: true
   },
 
   build: {

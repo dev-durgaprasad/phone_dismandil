@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>iPhone 13 — 3D Interactive Exploded View & Genuine Spare Parts</title>
+  <meta name="description" content="Experience the genuine spare parts and precision internal architecture of the iPhone 13 through an interactive 3D exploded disassembly view.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2312161b'/><rect x='30' y='18' width='40' height='64' rx='8' fill='none' stroke='%23e5b882' stroke-width='6'/><circle cx='50' cy='30' r='3' fill='%23e5b882'/></svg>">
+  
+  <!-- Stylesheet -->
+
+  <!-- Three.js ES Modules Import Map (Local node_modules with zero latency, offline capable) -->
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./node_modules/three/build/three.module.js",
+        "three/addons/": "./node_modules/three/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" crossorigin src="/assets/index-WjiGgVll.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-C5VrkcQT.css">
+</head>
+<body>
+
+  <!-- Fixed 3D Presentation Stage -->
+  <div id="ui-container">
+
+    <!-- Minimal Luxury Header -->
+    <header id="site-header">
+      <div class="brand-wrapper">
+        <a href="#" class="brand-logo">iPhone 13</a>
+        <span class="brand-badge">GENUINE PARTS</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#unibody" class="active">DESIGN</a>
+        <a href="#internals">INTERNALS</a>
+        <a href="#optics">OPTICS</a>
+        <a href="#exploded">EXPLODED VIEW</a>
+      </nav>
+
+      <button id="btn-explode-nav" class="cta-header-btn" onclick="document.getElementById('btn-explode').click()">DISASSEMBLE</button>
+    </header>
+
+    <!-- Giant Dynamic Typographic Backdrop -->
+    <div id="background-text">IPHONE 13</div>
+
+    <!-- Floating Letter-Spaced Subtitle -->
+    <div id="sub-text">G E N U I N E   P A R T S</div>
+
+    <!-- Left Phase Step Indicators -->
+    <div id="phase-tracker">
+      <div class="phase-step active">
+        <span class="phase-num">01</span>
+        <span class="phase-name">UNIBODY</span>
+      </div>
+      <div class="phase-step">
+        <span class="phase-num">02</span>
+        <span class="phase-name">PROFILE</span>
+      </div>
+      <div class="phase-step">
+        <span class="phase-num">03</span>
+        <span class="phase-name">ISOMETRIC</span>
+      </div>
+      <div class="phase-step">
+        <span class="phase-num">04</span>
+        <span class="phase-name">EXPLODED</span>
+      </div>
+    </div>
+
+    <!-- WebGL Canvas Container -->
+    <div id="canvas-container"></div>
+
+    <!-- Floating HUD Overlay for Component Tracking -->
+    <div id="hud-overlay"></div>
+
+    <!-- Atmospheric Wave Foreground Layer (Smooth SVG Curve) -->
+    <div id="foreground-layer">
+      <svg viewBox="0 0 1440 320" fill="none" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="waveGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#242a32" stop-opacity="0.95" />
+            <stop offset="40%" stop-color="#14181c" stop-opacity="0.98" />
+            <stop offset="100%" stop-color="#0a0c0e" stop-opacity="1.0" />
+          </linearGradient>
+        </defs>
+        <path d="M0,192L48,181.3C96,171,192,149,288,160C384,171,480,213,576,218.7C672,224,768,192,864,165.3C960,139,1056,117,1152,122.7C1248,128,1344,160,1392,176L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" fill="url(#waveGrad)"></path>
+      </svg>
+    </div>
+
+    <!-- Scroll Hint Indicator -->
+    <div id="scroll-indicator">
+      <div class="scroll-mouse">
+        <span class="scroll-wheel"></span>
+      </div>
+      <span class="scroll-text">SCROLL TO DISASSEMBLE</span>
+    </div>
+
+    <!-- Interactive Hint Pill on Hero Stage -->
+    <div id="phone-interactive-hint">
+      <span class="hint-dot"></span>
+      <span class="hint-text">Interactive iPhone 13 • Tap screen to open apps & play music</span>
+    </div>
+
+    <!-- Camera Shutter Flash Screen Effect -->
+    <div id="camera-flash-overlay"></div>
+
+    <!-- Interactive Phone Apps Bar (Quick Launch on Hero Page) -->
+    <div id="phone-apps-bar">
+      <span class="apps-bar-label">USE IPHONE</span>
+      <button class="app-launch-btn active" data-app="home" title="iOS Home Screen">
+        <span class="app-icon">📱</span>
+        <span class="app-name">HOME</span>
+      </button>
+      <button class="app-launch-btn" data-app="music" id="app-btn-music" title="Apple Music (Play Real Songs)">
+        <span class="app-icon">🎵</span>
+        <span class="app-name">MUSIC</span>
+        <span class="sound-wave-bars" id="sound-wave-bars">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+      <button class="app-launch-btn" data-app="camera" id="app-btn-camera" title="Camera (Viewfinder & Shutter)">
+        <span class="app-icon">📷</span>
+        <span class="app-name">CAMERA</span>
+      </button>
+      <button class="app-launch-btn" data-app="photos" id="app-btn-photos" title="Photo Gallery & Wallpapers">
+        <span class="app-icon">🖼️</span>
+        <span class="app-name">PHOTOS</span>
+      </button>
+      <button class="app-launch-btn" data-app="safari" id="app-btn-safari" title="Safari Web Browser">
+        <span class="app-icon">🧭</span>
+        <span class="app-name">SAFARI</span>
+      </button>
+      <button class="app-launch-btn" data-app="weather" id="app-btn-weather" title="Weather Forecast">
+        <span class="app-icon">☀️</span>
+        <span class="app-name">WEATHER</span>
+      </button>
+      <button class="app-launch-btn" data-app="settings" id="app-btn-settings" title="Flashlight & Settings">
+        <span class="app-icon">⚙️</span>
+        <span class="app-name">SETTINGS</span>
+      </button>
+    </div>
+
+    <!-- Floating Interactive Bottom Control Bar -->
+    <div id="control-bar">
+      <!-- Color Switcher -->
+      <div class="control-group">
+        <span class="control-label">FINISH</span>
+        <button class="swatch-btn swatch-midnight active" data-color="midnight" title="Midnight"></button>
+        <button class="swatch-btn swatch-starlight" data-color="starlight" title="Starlight"></button>
+        <button class="swatch-btn swatch-blue" data-color="blue" title="Blue"></button>
+        <button class="swatch-btn swatch-pink" data-color="pink" title="Pink"></button>
+        <button class="swatch-btn swatch-green" data-color="green" title="Green"></button>
+        <button class="swatch-btn swatch-red" data-color="red" title="(PRODUCT)RED"></button>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Explode Slider -->
+      <div class="control-group slider-container">
+        <span class="control-label">EXPLODE</span>
+        <input type="range" id="explode-slider" min="0" max="100" value="0">
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 3D Orbit Mode & Presets -->
+      <div class="control-group views-group">
+        <button id="orbit-btn" class="mode-btn" title="Toggle 360 Drag Orbit">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+          </svg>
+          360° DRAG
+        </button>
+        <button id="btn-assemble" class="mode-btn">ASSEMBLE</button>
+        <button id="btn-explode" class="mode-btn">EXPLODE</button>
+        <button id="btn-camera" class="mode-btn" title="Dismantle & Inspect Camera System">CAMERAS</button>
+      </div>
+    </div>
+
+    <!-- Component Detail Drawer -->
+    <div id="spec-drawer">
+      <div class="spec-header">
+        <div>
+          <div id="spec-category" class="spec-category">COMPUTING & LOGIC</div>
+          <h2 id="spec-title" class="spec-title"> A15 Bionic SoC</h2>
+        </div>
+        <button id="close-spec-btn" class="close-spec-btn" aria-label="Close details">&times;</button>
+      </div>
+      <p id="spec-body" class="spec-body">Built on 5nm architecture with 6-core CPU, 4-core GPU, and 16-core Neural Engine, powering cinematic mode and all iOS experiences.</p>
+      <div id="spec-metrics" class="spec-metrics">
+        <div class="metric-item">
+          <span class="metric-label">Architecture</span>
+          <span class="metric-val">5nm Bionic</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-label">Neural Engine</span>
+          <span class="metric-val">15.8 Trillion Ops/s</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll Height Track (Drives scroll progression silky smooth) -->
+  <div id="scroll-container"></div>
+
+  <!-- Main JavaScript Engine -->
+
+</body>
+</html>
