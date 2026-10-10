@@ -1,0 +1,20 @@
+{
+  "name": "nexora-x",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "NEXORA X - an interactive smartphone product study: explore the phone, reveal the internals, inspect every layer.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "dependencies": {
+    "gsap": "3.12.5",
+    "lenis": "1.1.14",
+    "three": "0.169.0"
+  },
+  "devDependencies": {
+    "vite": "5.4.10"
+  }
+}

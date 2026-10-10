@@ -1,0 +1,12 @@
+{
+  "name": "nexus-phone-exploded-view",
+  "version": "1.0.0",
+  "description": "3D Interactive Smartphone Exploded View in Three.js inspired by nicedigitals watch-project",
+  "scripts": {
+    "dev": "npx -y serve . -l 5173",
+    "start": "npx -y serve . -l 5173"
+  },
+  "dependencies": {
+    "three": "^0.186.1"
+  }
+}
