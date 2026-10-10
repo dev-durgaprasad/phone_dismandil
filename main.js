@@ -1970,7 +1970,7 @@ const glbExplodeConfig = {
 
 const gltfLoader = new GLTFLoader();
 gltfLoader.load(
-  'source/iphone_13_concept.glb',
+  `${import.meta.env.BASE_URL}source/iphone_13_concept.glb`,
   (gltf) => {
     const raw = gltf.scene;
 
